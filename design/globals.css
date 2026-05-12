@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Hara palette: warm whites, charcoal ink, coral accent */
+  --background: #FEFCF9;
+  --foreground: #2D2A26;
+  --card: #FFFFFF;
+  --card-foreground: #2D2A26;
+  --popover: #FFFFFF;
+  --popover-foreground: #2D2A26;
+  --primary: #C04A1A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F2ED;
+  --secondary-foreground: #2D2A26;
+  --muted: #F5F2ED;
+  --muted-foreground: #8B8580;
+  --accent: #FDF0EA;
+  --accent-foreground: #C04A1A;
+  --destructive: #C0554A;
+  --border: #E6E2DD;
+  --input: #E6E2DD;
+  --ring: #C04A1A;
+
+  /* Chart colors — warm naturals */
+  --chart-1: #C04A1A;
+  --chart-2: #5C8F6B;
+  --chart-3: #C0843A;
+  --chart-4: #8B6B5A;
+  --chart-5: #4A7B8F;
+
+  /* Sidebar */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #2D2A26;
+  --sidebar-primary: #C04A1A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FDF0EA;
+  --sidebar-accent-foreground: #C04A1A;
+  --sidebar-border: #E6E2DD;
+  --sidebar-ring: #C04A1A;
+}
+
+.dark {
+  --background: #1E1C19;
+  --foreground: #EDEAE5;
+  --card: #252320;
+  --card-foreground: #EDEAE5;
+  --popover: #252320;
+  --popover-foreground: #EDEAE5;
+  --primary: #D4653A;
+  --primary-foreground: #1E1C19;
+  --secondary: #2D2A26;
+  --secondary-foreground: #EDEAE5;
+  --muted: #2D2A26;
+  --muted-foreground: #9B9590;
+  --accent: #3D2016;
+  --accent-foreground: #D4653A;
+  --destructive: #D0654A;
+  --border: #3D3832;
+  --input: #3D3832;
+  --ring: #D4653A;
+
+  --chart-1: #D4653A;
+  --chart-2: #6B9E7A;
+  --chart-3: #D4954A;
+  --chart-4: #A08070;
+  --chart-5: #5A8B9F;
+
+  --sidebar: #1E1C19;
+  --sidebar-foreground: #EDEAE5;
+  --sidebar-primary: #D4653A;
+  --sidebar-primary-foreground: #1E1C19;
+  --sidebar-accent: #3D2016;
+  --sidebar-accent-foreground: #D4653A;
+  --sidebar-border: #3D3832;
+  --sidebar-ring: #D4653A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'ss01' 1, 'cv01' 1;
+  }
+}
+
+/* Scrollbar — subtle stone */
+.scrollbar-thin::-webkit-scrollbar { width: 5px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(139, 133, 128, 0.2);
+  border-radius: 3px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(139, 133, 128, 0.35);
+}

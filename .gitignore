@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+.next/
+out/
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Auth & secrets
+*credential*
+*secret*
+*token*
+*.pem
+*.key
+
+# Backend logic
+src/app/api/
+src/app/actions.ts
+src/app/login/actions.ts
+src/lib/auth.ts
+src/lib/prisma.ts
+src/middleware.ts
+src/proxy.ts
+prisma/
+
+# Docs & sessions
+*.md
+!README.md
+sesion-*
+task.md
