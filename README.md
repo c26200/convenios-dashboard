@@ -1,97 +1,102 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="screenshots/02-dashboard.png">
-  <img src="screenshots/02-dashboard.png" alt="Convenios Dashboard" width="100%">
-</picture>
+# Convenios — Gestión institucional de convenios
 
-# Convenios — Gestión Institucional
+Interfaz y sistema de diseño de una plataforma privada para administrar convenios
+interinstitucionales en una institución educativa. El código de la aplicación pertenece al
+cliente; este repositorio documenta el producto y sus decisiones de diseño.
 
-Sistema de gestión, seguimiento y analítica de convenios interinstitucionales. Diseñado para instituciones educativas que administran cientos de acuerdos con entidades externas.
+![Panel de control](screenshots/02-dashboard.png)
 
----
+## Contexto
 
-## Características
+Una institución educativa administra cientos de convenios con entidades externas: empresas,
+alcaldías y universidades. El seguimiento vivía en hojas de cálculo separadas, sin una vista
+consolidada de vencimientos y sin control sobre quién podía editar qué.
 
-- **Carga masiva Excel** — Subí archivos `.xlsx` y el sistema procesa, valida e inserta cada registro automáticamente
-- **Alertas de vencimiento** — Dashboard con KPIs de convenios vigentes, por vencer y vencidos. Alertas visuales automáticas
-- **Analíticas en tiempo real** — Distribución por facultad, estado, y línea de tiempo. Gráficos interactivos
-- **3 niveles de acceso** — Superadmin, Supervisor y Visitor con permisos granulares
-- **Exportación** — Descarga de reportes en Excel, PDF y DOCX
-- **Búsqueda y filtros** — Búsqueda full-text, filtros por facultad, estado, entidad y sede
+La plataforma reemplaza ese proceso con un panel único: carga masiva desde Excel, alertas de
+vencimiento, analítica por facultad y tres niveles de acceso.
 
----
+## Qué hace
 
-## Diseño
+- **Carga masiva desde Excel** — procesa, valida e inserta cada registro sin captura manual
+- **Alertas de vencimiento** — KPIs de convenios vigentes, por vencer y vencidos, con aviso visual
+- **Analítica** — distribución por facultad, estado y línea de tiempo
+- **Tres niveles de acceso** — superadmin, supervisor y visitante, con permisos granulares
+- **Exportación** — reportes en Excel, PDF y DOCX
+- **Búsqueda y filtros** — texto completo y filtros por facultad, estado, entidad y sede
 
-El sistema sigue una filosofía de diseño **Kenya Hara** (Muji): calma visual, vacío intencional, calidez táctil. La información respira.
+## Capturas
 
-### Design Tokens
+### Inicio de sesión
+
+![Inicio de sesión](screenshots/01-login.png)
+
+Layout dividido: identidad institucional a la izquierda, formulario minimal a la derecha.
+
+### Panel de control
+
+![Panel de control](screenshots/02-dashboard.png)
+
+KPI principal, métricas secundarias, distribución por estado y listado de próximos
+vencimientos.
+
+### Gestión de convenios
+
+![Gestión de convenios](screenshots/03-convenios.png)
+
+Tabla con búsqueda, filtros múltiples, carga por arrastre y detalle de cada convenio.
+
+### Analítica
+
+![Analítica](screenshots/04-analitica.png)
+
+Distribución por facultad y estado, y evolución temporal.
+
+## Sistema de diseño
+
+La interfaz sigue la línea de Kenya Hara y Muji: calma visual, vacío intencional, bordes en
+lugar de sombras y un solo color de acción.
+
+### Tokens
 
 | Token | Valor |
-|-------|-------|
-| Background | `#FEFCF9` — blanco cálido |
-| Foreground | `#2D2A26` — carbón |
-| Primary | `#C04A1A` — coral |
-| Border | `#E6E2DD` — stone |
-| Radius | `12px` — suave, orgánico |
+|---|---|
+| Fondo | `#FEFCF9` — blanco cálido |
+| Texto | `#2D2A26` — carbón |
+| Acento | `#C04A1A` — coral |
+| Borde | `#E6E2DD` — piedra |
+| Radio | `12px` |
 
 ### Tipografía
 
 | Rol | Fuente |
-|-----|--------|
-| Display | **Playfair Display** — serif, autoridad |
-| Body | **Inter** — limpia, legible |
-| Data | **JetBrains Mono** — precisión numérica |
+|---|---|
+| Títulos | Playfair Display |
+| Texto | Inter |
+| Datos | JetBrains Mono |
 
----
+### Principios
 
-## Pantallas
-
-### Login
-<img src="screenshots/01-login.png" alt="Login" width="100%">
-
-*Split layout institucional. Panel izquierdo con identidad de marca y features. Formulario derecho minimal sin ruido visual.*
-
-### Panel de Control
-<img src="screenshots/02-dashboard.png" alt="Dashboard" width="100%">
-
-*Hero KPI con número total. Stats secundarios sin saturación cromática. Gráficos de distribución por estado y facultad. Lista de próximos vencimientos con acceso rápido al detalle.*
-
-### Gestión de Convenios
-<img src="screenshots/03-convenios.png" alt="Convenios" width="100%">
-
-*Vista completa con búsqueda, filtros múltiples, carga de Excel drag & drop, y cards de convenios con información clave. Sidebar minimal con navegación tipográfica.*
-
-### Analítica
-<img src="screenshots/04-analitica.png" alt="Analítica" width="100%">
-
-*Dashboard de datos con distribución por facultad, estado, y evolución temporal. Paleta cromática natural derivada de los design tokens.*
-
----
+- **Bordes sobre sombras** — jerarquía sin elevación artificial
+- **Un acento, no cinco** — el coral es el único color de acción
+- **Tipografía como identidad** — Playfair Display da carácter institucional sin logos
+- **Vacío intencional** — la información importante respira
+- **Sin decoración** — cada elemento se gana su lugar
 
 ## Stack
 
 | Capa | Tecnología |
-|------|-----------|
+|---|---|
 | Framework | Next.js 16 (App Router) |
-| UI | React 19 + Tailwind CSS v4 + shadcn/ui |
-| Base de datos | PostgreSQL 14 + Prisma |
-| Tipografía | Playfair Display + Inter + JetBrains Mono |
+| UI | React 19, Tailwind CSS v4, shadcn/ui |
+| Datos | PostgreSQL 14, Prisma, Zod |
 | Gráficos | Recharts |
-| Validación | Zod |
 | Despliegue | Cloudflare Tunnel + HTTPS |
 
----
+## Alcance de este repositorio
 
-## Principios de diseño
+Este repositorio es una vitrina, no la aplicación. Incluye capturas y documentación del
+sistema de diseño; el código, el esquema de base de datos y las credenciales pertenecen al
+cliente y no se publican.
 
-- **Bordes sobre sombras** — Definición visual sin elevación artificial
-- **Un acento, no cinco** — Coral `#C04A1A` como único color de acción
-- **Tipografía como identidad** — Playfair Display da carácter institucional sin logos
-- **Vacío intencional** — La información importante tiene espacio para respirar
-- **Sin decoración** — Cada elemento gana su lugar. Cero iconos de relleno
-
----
-
-## Licencia
-
-MIT
+No hay demo pública por confidencialidad del proyecto. Si necesitas una revisión del
+producto terminado, escríbeme desde [mi perfil](https://github.com/c26200).
