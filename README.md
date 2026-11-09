@@ -1,102 +1,101 @@
-# Convenios — Gestión institucional de convenios
+# Convenios — Institutional Agreement Management
 
-Interfaz y sistema de diseño de una plataforma privada para administrar convenios
-interinstitucionales en una institución educativa. El código de la aplicación pertenece al
-cliente; este repositorio documenta el producto y sus decisiones de diseño.
+Interface and design system for a private platform that manages inter-institutional
+agreements at an educational institution. The application code belongs to the client; this
+repository documents the product and its design decisions.
 
-![Panel de control](screenshots/02-dashboard.png)
+![Dashboard](screenshots/02-dashboard.png)
 
-## Contexto
+## Context
 
-Una institución educativa administra cientos de convenios con entidades externas: empresas,
-alcaldías y universidades. El seguimiento vivía en hojas de cálculo separadas, sin una vista
-consolidada de vencimientos y sin control sobre quién podía editar qué.
+An educational institution manages hundreds of agreements with external organizations —
+companies, city halls and universities. Tracking lived in separate spreadsheets, with no
+consolidated view of upcoming expirations and no control over who could edit what.
 
-La plataforma reemplaza ese proceso con un panel único: carga masiva desde Excel, alertas de
-vencimiento, analítica por facultad y tres niveles de acceso.
+The platform replaces that process with a single panel: bulk import from Excel, expiry
+alerts, analytics by faculty and three access levels.
 
-## Qué hace
+## What it does
 
-- **Carga masiva desde Excel** — procesa, valida e inserta cada registro sin captura manual
-- **Alertas de vencimiento** — KPIs de convenios vigentes, por vencer y vencidos, con aviso visual
-- **Analítica** — distribución por facultad, estado y línea de tiempo
-- **Tres niveles de acceso** — superadmin, supervisor y visitante, con permisos granulares
-- **Exportación** — reportes en Excel, PDF y DOCX
-- **Búsqueda y filtros** — texto completo y filtros por facultad, estado, entidad y sede
+- **Bulk import from Excel** — validates and inserts each record without manual entry
+- **Expiry alerts** — KPIs for active, expiring and expired agreements, with visual warnings
+- **Analytics** — distribution by faculty, status and time
+- **Three access levels** — superadmin, supervisor and visitor, with granular permissions
+- **Exports** — Excel, PDF and DOCX reports
+- **Search and filters** — full-text search plus filters by faculty, status, organization and campus
 
-## Capturas
+## Screenshots
 
-### Inicio de sesión
+### Sign in
 
-![Inicio de sesión](screenshots/01-login.png)
+![Sign in](screenshots/01-login.png)
 
-Layout dividido: identidad institucional a la izquierda, formulario minimal a la derecha.
+Split layout: institutional identity on the left, a minimal form on the right.
 
-### Panel de control
+### Dashboard
 
-![Panel de control](screenshots/02-dashboard.png)
+![Dashboard](screenshots/02-dashboard.png)
 
-KPI principal, métricas secundarias, distribución por estado y listado de próximos
-vencimientos.
+Primary KPI, secondary metrics, distribution by status and a list of upcoming expirations.
 
-### Gestión de convenios
+### Agreement management
 
-![Gestión de convenios](screenshots/03-convenios.png)
+![Agreement management](screenshots/03-convenios.png)
 
-Tabla con búsqueda, filtros múltiples, carga por arrastre y detalle de cada convenio.
+Table with search, multiple filters, drag-and-drop upload and per-agreement detail.
 
-### Analítica
+### Analytics
 
-![Analítica](screenshots/04-analitica.png)
+![Analytics](screenshots/04-analitica.png)
 
-Distribución por facultad y estado, y evolución temporal.
+Distribution by faculty and status, plus a timeline.
 
-## Sistema de diseño
+## Design system
 
-La interfaz sigue la línea de Kenya Hara y Muji: calma visual, vacío intencional, bordes en
-lugar de sombras y un solo color de acción.
+The interface follows the Kenya Hara / Muji line: visual calm, intentional emptiness, borders
+instead of shadows and a single action color.
 
 ### Tokens
 
-| Token | Valor |
+| Token | Value |
 |---|---|
-| Fondo | `#FEFCF9` — blanco cálido |
-| Texto | `#2D2A26` — carbón |
-| Acento | `#C04A1A` — coral |
-| Borde | `#E6E2DD` — piedra |
-| Radio | `12px` |
+| Background | `#FEFCF9` — warm white |
+| Text | `#2D2A26` — charcoal |
+| Accent | `#C04A1A` — coral |
+| Border | `#E6E2DD` — stone |
+| Radius | `12px` |
 
-### Tipografía
+### Typography
 
-| Rol | Fuente |
+| Role | Typeface |
 |---|---|
-| Títulos | Playfair Display |
-| Texto | Inter |
-| Datos | JetBrains Mono |
+| Headings | Playfair Display |
+| Body | Inter |
+| Data | JetBrains Mono |
 
-### Principios
+### Principles
 
-- **Bordes sobre sombras** — jerarquía sin elevación artificial
-- **Un acento, no cinco** — el coral es el único color de acción
-- **Tipografía como identidad** — Playfair Display da carácter institucional sin logos
-- **Vacío intencional** — la información importante respira
-- **Sin decoración** — cada elemento se gana su lugar
+- **Borders over shadows** — hierarchy without artificial elevation
+- **One accent, not five** — coral is the only action color
+- **Typography as identity** — Playfair Display carries the institutional tone without a logo
+- **Intentional emptiness** — important information is given room to breathe
+- **No decoration** — every element earns its place
 
 ## Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 |---|---|
 | Framework | Next.js 16 (App Router) |
 | UI | React 19, Tailwind CSS v4, shadcn/ui |
-| Datos | PostgreSQL 14, Prisma, Zod |
-| Gráficos | Recharts |
-| Despliegue | Cloudflare Tunnel + HTTPS |
+| Data | PostgreSQL 14, Prisma, Zod |
+| Charts | Recharts |
+| Deployment | Cloudflare Tunnel + HTTPS |
 
-## Alcance de este repositorio
+## Scope of this repository
 
-Este repositorio es una vitrina, no la aplicación. Incluye capturas y documentación del
-sistema de diseño; el código, el esquema de base de datos y las credenciales pertenecen al
-cliente y no se publican.
+This repository is a showcase, not the application. It contains screenshots and
+documentation for the design system; the code, database schema and credentials belong to
+the client and are not published.
 
-No hay demo pública por confidencialidad del proyecto. Si necesitas una revisión del
-producto terminado, escríbeme desde [mi perfil](https://github.com/c26200).
+There is no public demo because the project is confidential. If you need a walkthrough of
+the finished product, reach out through [my profile](https://github.com/c26200).
